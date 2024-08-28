@@ -141,3 +141,47 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     draw()
   }
+
+  ////fix rotation of tetrominos at the egde
+  function isAtRight() {
+    return current.some(index => (currentPosition + index + 1) % width === 0)
+  }
+
+  function isAtLeft() {
+    return current.some(index => (currentPosition + index) % width === 0)
+  }
+
+  function checkRotatePosition(P) {
+    //get current position.  Then, check if the piece is near the left side.
+    P = P || currentPosition
+    //add 1 because the position index can be 1 less than where the piece is (with how they are indexed).
+    if ((P+1) % width < 4) {
+    //use actual position to check if it's flipped over to right side  
+    if (isAtRight()) {
+    //if so, add one to wrap it back around
+    currentPosition +=1
+    //check again.  Pass position from start, since long block might need to move more.  
+    checkRotatePosition(P)
+    }
+  }
+  else if (P % width > 5) {
+    if (isAtLeft()){
+      currentPosition -= 1
+      checkRotatedPosition(P)
+    }
+  }
+}
+
+//rotate the tetromino
+function rotate() {
+  undraw()
+  currentRotation ++
+  if(currentRotation === current.length) {
+    //if the current rotation gets to 4, make it go back to 0
+    currentRotation = 0
+  }
+  current = theTetrominoes[random][currentRotation]
+  checkRotatedPosition()
+  draw()
+}
+////
