@@ -5,12 +5,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const scoreDisplay = document.querySelector("#score");
   const startBtn = document.querySelector("#start-button");
   const width = 10;
-  let nextRandom = ;
+  let nextRandom = 0;
   let timerId = 0;
   let score = 0;
   const colors = ["orange", "red", "purple", "green", "blue"];
 
   //The Tetrominoes
+  //0xx
+  //0x0
+  //0x0
   const lTetromino = [
     [1, width + 1, width * 2 + 1, 2],
     [width, width + 1, width + 2, width * 2 + 2],
@@ -46,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     [width, width + 1, width + 2, width + 3],
   ];
 
-  const the Tetrominoes = [
+  const theTetrominoes = [
     lTetromino,
     zTetromino,
     tTetromino,
@@ -65,16 +68,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
    //draw the Tetromino
   function draw() {
-    current.forEach((index) => {
+    current.forEach(index => {
       squares[currentPosition + index].classList.add("tetromino");
       squares[currentPosition + index].style.backgroundColor = colors[random];
-    });
-  }
+  })
+}
   
   //undraw the Tetromino
   function undraw() {
-   current.forEach((index) => {
-     squares[currentPosition + index].classList.remove("tetromino");
-     squares[currentPosition + index].style.backgroundColor = "";
-   }); 
+    current.forEach(index => {
+      squares[currentPosition + index].classList.remove("tetromino");
+      squares[currentPosition + index].style.backgroundColor = "";
+    })
   }
+
+  //assign functions to keyCodes
+  function control(e) {
+    if(e.keyKode === 37) {
+      moveLeft()
+    } else if (e.keyKode === 38) {
+      rotate()
+    } else if (e.keyKode === 39) {
+      moveRight()
+    } else if (e.keyKode == 40) {
+      moveDown()
+    }
+  }
+  document.addEventListener('keyup', control)
