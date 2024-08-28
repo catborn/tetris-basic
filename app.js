@@ -131,4 +131,5 @@ document.addEventListener("DOMContentLoaded", () => {
     draw()
   }
 
+  //move the tetromino right, unless is at the edge or there is a blockage
   
