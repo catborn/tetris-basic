@@ -185,3 +185,10 @@ function rotate() {
   draw()
 }
 ////
+
+
+//show up-next tetromino in mini-grid display
+const displaySquares = document.querySelectorAll('.mini-grid div')
+const displayWidth = 4
+const displayIndex = 0
+
