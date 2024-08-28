@@ -113,8 +113,10 @@ document.addEventListener("DOMContentLoaded", () => {
   //freeze function
   function freeze() {
     if (
-      current.some((index) =>
-        squares[currentPosition + index + width].classList.contains("taken")
+      current.some(
+        (index) =>
+          squares[currentPosition + index + width] === undefined ||
+          squares[currentPosition + index + width].classList.contains("taken")
       )
     ) {
       current.forEach((index) =>
