@@ -84,14 +84,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //assign functions to keyCodes
   function control(e) {
-    if(e.keyKode === 37) {
+    if(e.keyCode === 37) {
       moveLeft()
-    } else if (e.keyKode === 38) {
+    } else if (e.keyCode === 38) {
       rotate()
-    } else if (e.keyKode === 39) {
+    } else if (e.keyCode === 39) {
       moveRight()
-    } else if (e.keyKode == 40) {
+    } else if (e.keyCode == 40) {
       moveDown()
     }
   }
   document.addEventListener('keyup', control)
+
+  //move down function
+  function moveDown() {
+    undraw()
+    currentPosition += width
+    draw()
+    freeze()
+  }
+
+  //
