@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const grid = document.querySelector(".grid");
-  let squares = Array.from(document.querySelector(".grid div"));
+  let squares = Array.from(document.querySelectorAll(".grid div"));
   // console.table(squares);
   const scoreDisplay = document.querySelector("#score");
   const startBtn = document.querySelector("#start-button");
@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (P % width > 5) {
       if (isAtLeft()) {
         currentPosition -= 1;
-        checkRotatedPosition(P);
+        checkRotatePosition(P);
       }
     }
   }
@@ -198,7 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
       currentRotation = 0;
     }
     current = theTetrominoes[random][currentRotation];
-    checkRotatedPosition();
+    checkRotatePosition();
     draw();
   }
   ////
@@ -273,7 +273,7 @@ document.addEventListener("DOMContentLoaded", () => {
           squares[index].classList.remove("tetromino");
           squares[index].style.backgroundColor = "";
         });
-        const squareRemoved = squares.splice(i, width);
+        const squaresRemoved = squares.splice(i, width);
         squares = squaresRemoved.concat(squares);
         squares.forEach((cell) => grid.appendChild(cell));
       }
