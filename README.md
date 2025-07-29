@@ -21,3 +21,5 @@ JavaScript methods:
 - add()
 - remove()
 - contains()
+
+![alt text](image.png)
